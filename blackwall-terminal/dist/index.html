@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080b08">
+  <meta name="description" content="B4d_M0nk3y. Deadwire FM. Autonomous netrunner terminal display.">
+  <title>B4d_M0nk3y // Deadwire FM</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/rajdhani-500.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="assets/share-tech-mono.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="interface.css">
+  <link rel="stylesheet" href="matrix.css">
+  <script src="app.js" defer></script>
+</head>
+<body class="booting">
+<svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs><filter id="deadwire-tint" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 0.68  0 0 0 0 0.74  0 0 0 0 0.35  0 1 0 0 0"/></filter></defs>
+  <symbol id="i-network" viewBox="0 0 24 24"><path d="m12 3 8 5v9l-8 5-8-5V8zM12 3v9m8-4-8 4-8-4m8 4v10m-8-5 8-5 8 5"/></symbol>
+  <symbol id="i-terminal" viewBox="0 0 24 24"><path d="m4 6 6 6-6 6m9 0h8"/></symbol>
+</svg>
+<div class="crt" aria-hidden="true"></div>
+<div class="screen-shell">
+  <header class="topbar">
+    <div class="identity"><h1>B4d_M0nk3y</h1><span class="identity-label">LOCALNET<br>ACCESS / 07</span></div>
+    <div class="header-route"><span>NETRUN INTERFACE</span><span>NC.LOCALNET / ENCRYPTED UPLINK</span></div>
+    <span class="header-signal"><span class="live-dot"></span>CONNECTION ACTIVE</span>
+    <time id="clock" class="clock">00:00:00</time>
+  </header>
+  <div class="workspace"><main id="desktop" class="desktop"><div class="dashboard">
+    <div class="left-column">
+      <section class="panel source-panel" aria-labelledby="source-title">
+        <div class="panel-header"><img class="protocol-art" src="assets/protocol-1.png" alt=""><h2 id="source-title">TERMINAL</h2><span class="panel-id">B4d_M0nk3y / TTY.01</span></div>
+        <div class="code-window"><div class="code-lines mono" id="code-lines" role="log" aria-live="off" aria-label="Continuous raw terminal stream"></div><div class="code-fade"></div></div>
+      </section>
+      <section class="panel radio-panel" aria-labelledby="radio-title">
+        <div class="panel-header"><h2 id="radio-title">PIRATE UPLINK</h2><span class="on-air mono"><span class="live-dot"></span>ON AIR</span><span class="panel-id">FM / 07</span></div>
+        <div class="radio-station"><div class="radio-logo"><img src="assets/deadwire-logo.png" width="1000" height="1000" alt="Deadwire FM logo"></div><div class="radio-name"><span class="tiny-label">NIGHT CITY / PIRATE RADIO</span><h3>DEADWIRE <span>FM</span></h3><span class="radio-host">B4d_M0nk3y</span></div></div>
+        <div class="radio-waveform" id="radio-waveform" aria-hidden="true"></div>
+        <div class="radio-bottom mono"><span>DEADWIRE.FM / LOCAL TRANSMITTER</span><span><span class="live-dot"></span>TX ACTIVE</span></div>
+      </section>
+    </div>
+    <div class="center-column">
+      <section class="panel topology-panel" aria-labelledby="topology-title">
+        <div class="panel-header"><h2 id="topology-title"><svg><use href="#i-network"/></svg>NETWORK TOPOLOGY</h2><span class="live-label"><span class="live-dot"></span>LIVE</span></div>
+        <div class="map-stage" id="map-stage">
+          <div class="map-topline mono"><span>SUBNET / 192.168.07.0</span><span>UPLINK <b>ESTABLISHED</b></span></div>
+          <canvas id="network-canvas" aria-label="Animated network topology with eight relays and a central network core"></canvas><div class="map-vignette"></div>
+          <span class="map-coordinate mono">NC.LOCALNET<br>RELAY CHAIN / 08</span><span class="map-crosshair">+</span>
+          <div class="map-caption"><img class="protocol-art warning-art" src="assets/warning-labels.png" alt=""><div><span class="tiny-label">ACCESS POINT</span><b>LOCALNET <span>/ CORE_01</span></b></div></div>
+          <div class="map-key mono"><span><i></i>ACTIVE RELAY</span><span><i class="yellow-key"></i>TARGET CORE</span></div>
+        </div>
+      </section>
+      <section class="panel terminal-panel" aria-labelledby="terminal-title">
+        <div class="panel-header"><h2 id="terminal-title">SESSION OUTPUT</h2><span class="terminal-path">B4d_M0nk3y@localnet:~</span></div>
+        <div class="terminal-lines mono" id="terminal-lines" role="log" aria-live="off" aria-label="Autonomous session output"></div>
+        <div class="terminal-command mono"><span>B4d_M0nk3y@bw <span class="dim">~</span> ❯</span><span class="terminal-waiting" id="terminal-waiting">uplink --persist</span><i class="terminal-cursor"></i></div>
+      </section>
+    </div>
+    <div class="right-column">
+      <section class="panel breach-panel" aria-labelledby="breach-title">
+        <div class="panel-header"><h2 id="breach-title">BREACH PROTOCOL</h2><span class="panel-id">BP / 05</span></div>
+        <div class="breach-timer"><span>BREACH TIME REMAINING</span><span id="breach-time">--.--</span></div>
+        <div class="buffer-region"><h3 class="section-label">BUFFER</h3><div class="buffer-slots" id="buffer-slots" aria-label="Automatically filled breach buffer"></div></div>
+        <div class="matrix-region"><div class="matrix-frame"><h3 class="section-label"><img class="protocol-art" src="assets/protocol-1.png" alt="">CODE MATRIX</h3><div class="code-matrix" id="code-matrix" aria-label="Autonomous five by five hexadecimal code matrix"></div></div><div class="phase-readout"><span id="phase-title">CONNECTING</span><span>CYCLE <span id="cycle-number">001</span></span></div></div>
+        <div class="daemon-region"><h3 class="section-label">SEQUENCE REQUIRED TO UPLOAD</h3>
+          <div class="daemon-row" id="daemon-0"><span class="daemon-mark">V.1</span><div class="daemon-info"><h3>ICEPICK</h3><div class="daemon-codes">BD 1C 55</div></div><span class="daemon-state">QUEUED</span></div>
+          <div class="daemon-row" id="daemon-1"><span class="daemon-mark">V.2</span><div class="daemon-info"><h3>DATAMINE_V1</h3><div class="daemon-codes">55 E9 7A</div></div><span class="daemon-state">QUEUED</span></div>
+          <div class="daemon-row" id="daemon-2"><span class="daemon-mark">V.3</span><div class="daemon-info"><h3>DATAMINE_V2</h3><div class="daemon-codes">E9 7A BD</div></div><span class="daemon-state">QUEUED</span></div>
+        </div>
+        <div class="protocol-stamp"><img class="protocol-art" src="assets/protocol-2.png" alt=""></div>
+      </section>
+    </div>
+  </div></main></div>
+</div>
+</body>
+</html>

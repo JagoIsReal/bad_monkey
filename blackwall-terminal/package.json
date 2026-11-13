@@ -1,0 +1,10 @@
+{
+  "name": "blackwall-terminal",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bureau de netrunner autonome, noir, vert et jaune.",
+  "scripts": {
+    "start": "node serve.mjs",
+    "check": "node --check dist/app.js"
+  }
+}
