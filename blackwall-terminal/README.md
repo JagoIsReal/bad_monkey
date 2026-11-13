@@ -14,11 +14,11 @@ The original Deadwire FM logo is recolored at display time using an SVG color ma
 
 ## GitHub Pages
 
-Use this folder (`blackwall-terminal`) as the **repository root**, including the hidden `.github` folder. The supplied workflow deploys `dist/` when changes are pushed to `main`.
+The Git repository root is `bad_monkey/`. The deployment workflow is at `.github/workflows/pages.yml` in that root and publishes `blackwall-terminal/dist/`. It runs on pushes to `master` or `main`.
 
-1. Push this folder to the desired GitHub repository.
+1. Commit and push from the `bad_monkey/` repository, including the root `.github/` folder.
 2. In **Settings → Pages → Build and deployment → Source**, select **GitHub Actions**.
-3. Push to `main`, or run **Deploy BLACKWALL to GitHub Pages** from the Actions tab.
+3. Push to `master` or `main`, or run **Deploy BLACKWALL to GitHub Pages** from the Actions tab.
 
 All asset paths are relative, so both account sites and project sites under `/<repository>/` work. No `.openai/hosting.json`, backend, external font service, or Sites hosting is needed.
 
